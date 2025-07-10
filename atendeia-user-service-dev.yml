@@ -3,19 +3,20 @@ spring:
     activate:
       on-profile: dev
 
-datasource:
-  url: jdbc:postgresql://localhost:5432/atendeia_user_db
-  username: postgres
-  password: postgres
-  driver-class-name: org.postgresql.Driver
+  datasource:
+    url: jdbc:postgresql://postgres:5432/atendeia_user_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
 
-jpa:
-  hibernate:
-    ddl-auto: update # ou validate, dependendo do controle desejado
-  show-sql: true
-  properties:
+  jpa:
     hibernate:
-      format_sql: true
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
 
 eureka:
   client:
