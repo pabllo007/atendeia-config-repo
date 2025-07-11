@@ -1,0 +1,21 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/atendeia  # URL do Keycloak para DEV
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
+
+cloud:
+  gateway:
+    routes:
+      - id: user-service
+        uri: lb://user-service
+        predicates:
+          - Path=/api/usuarios/**
+        filters:
+          - StripPrefix=1

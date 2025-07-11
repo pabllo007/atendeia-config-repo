@@ -1,0 +1,21 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://keycloak.prod.example.com/realms/atendeia  # URL do Keycloak para PRD
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:https://eureka.prod.example.com/eureka/}
+
+cloud:
+  gateway:
+    routes:
+      - id: user-service
+        uri: lb://user-service
+        predicates:
+          - Path=/api/usuarios/**
+        filters:
+          - StripPrefix=1
