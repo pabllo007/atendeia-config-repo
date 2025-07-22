@@ -43,11 +43,3 @@ springdoc:
     display-request-duration: true
   paths-to-exclude:
     - /actuator/**
-
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-    tryItOutEnabled: true
-    display-request-duration: true
-  paths-to-exclude:
-    - /actuator/**
