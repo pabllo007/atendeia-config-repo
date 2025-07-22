@@ -1,0 +1,45 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: auth-service
+
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: user-service-client
+            client-secret: zrrwOb0QZnbUXNXSJH8GSIGJp0KKzpjo
+            authorization-grant-type: password
+            scope: openid
+        provider:
+          keycloak:
+            token-uri: http://localhost:8080/realms/atendeia-realm/protocol/openid-connect/token
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tryItOutEnabled: true
+    display-request-duration: true
+  paths-to-exclude:
+    - /actuator/**
