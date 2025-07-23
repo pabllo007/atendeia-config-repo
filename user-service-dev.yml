@@ -5,13 +5,13 @@ spring:
 
   datasource:
     url: jdbc:postgresql://localhost:5432/atendeia_user_db
-    username: postgres
-    password: postgres
+    username: atendeia_user
+    password: atendeia
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
     properties:
       hibernate:
