@@ -4,34 +4,18 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8180/realms/atendeia-realm  # URL do Keycloak para DEV
-  config:
-    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888}  # Configuração do Config Server
 
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka}  # Endereço do Eureka Server
-    fetch-registry: true
-    register-with-eureka: true
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
 
 cloud:
   gateway:
-    discovery:
-      locator:
-        enabled: true
-        lower-case-service-id: true
-routes:
     routes:
       - id: user-service
         uri: lb://user-service
         predicates:
           - Path=/api/usuarios/**
-
-      - id: auth-service
-        uri: lb://auth-service
-        predicates:
-          - Path=/auth/**
-
-logging:
-  level:
-    org.springframework.cloud.gateway: DEBUG
+        filters:
+          - StripPrefix=1
