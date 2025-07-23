@@ -11,7 +11,7 @@ spring:
         registration:
           keycloak:
             client-id: user-service-client
-            client-secret: zrrwOb0QZnbUXNXSJH8GSIGJp0KKzpjo
+            client-secret: wAzW2s0lTpgjF4aZVAC0PxfPVOuHFMHK
             authorization-grant-type: password
             scope: openid
         provider:
