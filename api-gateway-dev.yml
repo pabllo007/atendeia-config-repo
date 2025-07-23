@@ -1,16 +1,9 @@
 spring:
-  application:
-    name: api-gateway  # Nome da aplicação
-
-  profiles:
-    active: ${SPRING_PROFILES_ACTIVE:dev}  # Perfil ativo (fall back para dev)
-
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8180/realms/atendeia-realm
-
+          issuer-uri: http://localhost:8180/realms/atendeia-realm  # URL do Keycloak para DEV
   config:
     import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888}  # Configuração do Config Server
 
